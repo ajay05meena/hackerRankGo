@@ -7,8 +7,7 @@ import (
 )
 
 func TestClosestNumbers(t *testing.T) {
-	a := make([]int32, 1, 1)
-	a = append(a, 5, 4, 3, 2)
+	var a  = []int32 {5, 4, 3, 2}
 	numbers := ClosestNumbers(a)
 	assert.Equal(t, 6, len(numbers))
 }

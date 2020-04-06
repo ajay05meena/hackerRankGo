@@ -23,21 +23,22 @@ func (f foo) Swap(i, j int) {
 func ClosestNumbers(arr []int32) []int32 {
 	sort.Sort(foo(arr))
 	prev := int32(2147483647)
-	min := int32(2147483647)
+	min := float64(2147483647)
 	for _, n := range arr{
-		if float64(min) > math.Abs(float64(prev-n)) {
-			min = prev - n
+		if min > math.Abs(float64(prev-n)) {
+			min = math.Abs(float64(prev-n))
 		}
 		prev = n
 	}
 
-	res := make([] int32, 6)
+	res := make([] int32, 0)
 
 	prev = int32(2147483647)
 	for _, n := range arr{
-		if float64(min) == math.Abs(float64(prev-n)) {
+		if min == math.Abs(float64(prev-n)) {
 			res = append(res, prev, n)
 		}
+		prev = n
 	}
 	return res
 }
